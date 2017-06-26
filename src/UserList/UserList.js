@@ -33,14 +33,14 @@ class UserList extends Component {
 
       const userOptions = users.map((user, i) => {
         return(
-          <option value={i}>{user}</option>
+          <option key={i+1} value={i+1}>{user}</option>
         );
       });
 
       return (
         <div className="userList">
           <select id="users" name="users">
-          <option value="0" selected>Select an option</option>
+          <option key={0} value="0" defaultValue>Select an option</option>
             { userOptions }
           </select>
         </div>
