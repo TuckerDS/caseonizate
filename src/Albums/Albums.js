@@ -6,12 +6,9 @@ class Albums extends Component {
   constructor(props) {
     super(props);
     this.state = { albums: [] };
-    console.log(this.props);
-    //this.a = [];
   }
 
-  componentWillUpdate() {
-    let userID = 1;
+  componentDidUpdate() {
     const URL = 'http://jsonplaceholder.typicode.com/albums?userId=' + this.props.user;
     fetch(URL).then(respuesta => respuesta.json())
       .then(datos => {
@@ -19,10 +16,7 @@ class Albums extends Component {
         datos.forEach(album => {
           albumsArray.push(album.title);
         });
-        console.log(albumsArray);
         this.setState({albums: albumsArray});
-
-        //console.log("Usuario: " + this.state.users[0].name);
       })
       .catch((error) => console.log(error));
   }
@@ -40,7 +34,7 @@ class Albums extends Component {
 
       return (
         <div className="albumsList">
-          <select id="albums" name="albums">
+          <select id="albums" name="albums" onChange={this.props.onChange}>
           <option key={0} value="0" defaultValue>Select an option</option>
             { userOptions }
           </select>

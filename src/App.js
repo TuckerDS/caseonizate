@@ -1,42 +1,47 @@
+/*jshint esversion: 6*/
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import UserList from './UserList/UserList';
 import Albums from './Albums/Albums';
+import Gallery from './Gallery/Gallery';
 
 class App extends Component {
   constructor (props) {
     super(props);
-    this.state = {user: 0};
-
+    this.state = {user: 0, album: 0};
   }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
         <UserList
           onChange={this.userChange}
         />
 
         <Albums
           user={this.state.user}
+          onChange={this.albumChange}
         />
+
+        <Gallery
+          album={this.state.album}
+        />
+
       </div>
     );
   }
 
   userChange = (e) => {
-    console.log(e.target.value);
     this.setState({user: e.target.value});
   }
 
-}
+  albumChange = (e) => {
+    console.log("album id: " + e.target.value);
+    this.setState({album: e.target.value});
+  }
 
+}
 
 export default App;
