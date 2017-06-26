@@ -27,9 +27,27 @@ class UserList extends Component {
   }
 
   render() {
+    let users = this.state.users;
+    let userOptions = "";
+    if (users.length > 0) {
 
+      const userOptions = users.map((user, i) => {
+        return(
+          <option value={i}>{user}</option>
+        );
+      });
+
+      return (
+        <div className="userList">
+          <select id="users" name="users">
+          <option value="0" selected>Select an option</option>
+            { userOptions }
+          </select>
+        </div>
+      );
+    } else {
       return <p className="text-center">Cargando usuarios...</p>
-    
+    }
   }
 
 }
