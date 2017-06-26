@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import UserList from './UserList/UserList';
-import Gallery from './Gallery/Gallery';
+import Albums from './Albums/Albums';
 
 class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {user: 0};
+
+  }
   render() {
     return (
       <div className="App">
@@ -16,15 +21,19 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <UserList
-          onClick={() => this.userClick()}
+          onChange={this.userChange}
         />
-        <Gallery />
+
+        <Albums
+          user={this.state.user}
+        />
       </div>
     );
   }
 
-  userClick() {
-    console.log("EventoClick");
+  userChange = (e) => {
+    console.log(e.target.value);
+    this.setState({user: e.target.value});
   }
 
 }

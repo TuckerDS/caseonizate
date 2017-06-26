@@ -1,17 +1,18 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
-import './Gallery.css';
+import './Albums.css';
 
-class Gallery extends Component {
+class Albums extends Component {
   constructor(props) {
     super(props);
     this.state = { albums: [] };
+    console.log(this.props);
     //this.a = [];
   }
 
-  componentWillMount() {
+  componentWillUpdate() {
     let userID = 1;
-    const URL = 'http://jsonplaceholder.typicode.com/albums?userId='+userID;
+    const URL = 'http://jsonplaceholder.typicode.com/albums?userId=' + this.props.user;
     fetch(URL).then(respuesta => respuesta.json())
       .then(datos => {
         var albumsArray = [];
@@ -52,4 +53,4 @@ class Gallery extends Component {
 
 }
 
-export default Gallery;
+export default Albums;

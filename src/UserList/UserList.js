@@ -39,7 +39,7 @@ class UserList extends Component {
 
       return (
         <div className="userList">
-          <select id="users" name="users">
+          <select id="users" name="users" onChange={this.props.onChange}>
           <option key={0} value="0" defaultValue>Select an option</option>
             { userOptions }
           </select>
